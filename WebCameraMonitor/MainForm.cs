@@ -30,11 +30,10 @@ namespace IPCameraMonitor
         {
             InitializeComponent();
             this.Load += MainForm_Load;
-            this.Resize += MainForm_Resize;
             this.DoubleClick += MainForm_DoubleClick;
         }
 
-        private void MainForm_Resize(object sender, EventArgs e)
+        private void ResizeWnd()
         {
             int width = this.Width / 2;
             this.panel_a.Location = new Point(0,13);
@@ -52,6 +51,7 @@ namespace IPCameraMonitor
         {
             try
             {
+				ResizeWnd();
                 if(InitSys())
                 {
                     InitPlayer();
