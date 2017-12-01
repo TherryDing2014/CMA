@@ -33,7 +33,7 @@ namespace IPCameraMonitor
             this.DoubleClick += MainForm_DoubleClick;
         }
 
-        private void ResizeWnd()
+        private void ResizePanel()
         {
             int width = this.Width / 2;
             this.panel_a.Location = new Point(0,13);
@@ -51,8 +51,8 @@ namespace IPCameraMonitor
         {
             try
             {
-				ResizeWnd();
-                if(InitSys())
+                ResizePanel();
+                if (InitSys())
                 {
                     InitPlayer();
                 }
@@ -60,6 +60,7 @@ namespace IPCameraMonitor
             catch (System.Exception ex)
             {
                 ShowSysError(ex.Message);
+                LogManager.Insert(this, "MainForm_Load",ex.Message);
             }
         }
 
@@ -77,7 +78,9 @@ namespace IPCameraMonitor
                 }
                 else
                 {
-                    MessageBox.Show("配置工具未找到,请重新安装程序!");
+                    string msg = "配置工具未找到,请重新安装程序!";
+                    LogManager.Insert(this, "MsgInit", msg);
+                    MessageBox.Show(msg);
                     Close();
                 }
             }
@@ -105,14 +108,15 @@ namespace IPCameraMonitor
                     return false;
                 }
             }
-            string resMsg = "";
-            bool res = APManager.ConnectToSSID(systemSettings.APUser,
-                systemSettings.APPass, out resMsg);
-            if (!res)
-            {
-                ShowSysError(resMsg);
-                return false;
-            }
+            //string resMsg = "";
+            //bool res = APManager.ConnectToSSID(systemSettings.APUser,
+            //    systemSettings.APPass, out resMsg);
+            //if (!res)
+            //{
+            //    LogManager.Insert(this, "InitSys", resMsg);
+            //    ShowSysError(resMsg);
+            //    return false;
+            //}
 
             return true;
         }
@@ -132,6 +136,7 @@ namespace IPCameraMonitor
             if(systemSettings.IPCS == null ||
                 systemSettings.IPCS.Count < 1)
             {
+                LogManager.Insert(this, "InitPlayer", "配置信息错误!");
                 ShowSysError("配置信息错误!");
                 return;
             }
@@ -214,13 +219,13 @@ namespace IPCameraMonitor
                             elm.Style = "display:none;";
                         }
 
-                        Thread.Sleep(50);
+                        //Thread.Sleep(50);
                         HtmlElement script = playerB.Document.CreateElement("script");
                         script.SetAttribute("type", "text/javascript");
                         string func = "function _func(){" +
-                        "$(\"#object\").css(\"height\",$(window).height()-4);" +
-                        "$(\"#object\").css(\"width\",$(window).width()-2);" +
-                        "$(\"#IPCamera\").css({\"width\": $(window).width()-4,\"height\": $(window).height()-2,\"margin-top\":0});" +
+                        "$(\"#object\").css(\"height\",$(window).height()-40);" +
+                        "$(\"#object\").css(\"width\",$(window).width()-20);" +
+                        "$(\"#IPCamera\").css({\"width\": $(window).width()-20,\"height\": $(window).height()-40,\"margin-top\":0});" +
                         "$(\"#object\").css(\"margin-left\",2);" +
                         "}";
                         script.SetAttribute("text", func);
@@ -303,13 +308,12 @@ namespace IPCameraMonitor
                             elm.Style = "display:none;";
                         }
 
-                        Thread.Sleep(50);
+                        //Thread.Sleep(50);
                         HtmlElement script = playerA.Document.CreateElement("script");
-                        script.SetAttribute("type", "text/javascript");
                         string func = "function _func(){" +
-                        "$(\"#object\").css(\"height\",$(window).height()-4);" +
+                        "$(\"#object\").css(\"height\",$(window).height()-40);" +
                         "$(\"#object\").css(\"width\",$(window).width()-2);" +
-                        "$(\"#IPCamera\").css({\"width\": $(window).width()-4,\"height\": $(window).height()-2,\"margin-top\":0});" +
+                        "$(\"#IPCamera\").css({\"width\": $(window).width()-2,\"height\": $(window).height()-40,\"margin-top\":0});" +
                         "$(\"#object\").css(\"margin-left\",2);" +
                         "}";
                         script.SetAttribute("text", func);
@@ -386,6 +390,7 @@ namespace IPCameraMonitor
                         lb_ipc1.Text = systemSettings.IPCS[0].Des + "连接失败,请检查配置后重试!";
                     else
                         lb_ipc1.Text = "摄像头1连接失败,请检查配置后重试!";
+                    LogManager.Insert(this, "Tm_Tick", lb_ipc1.Text);
                     lb_ipc1.ForeColor = System.Drawing.Color.Red;
                 }
                 if (!IPC2Connected)
@@ -394,6 +399,7 @@ namespace IPCameraMonitor
                         lb_ipc2.Text = systemSettings.IPCS[1].Des + "连接失败,请检查配置后重试!";
                     else
                         lb_ipc2.Text = "摄像头2连接失败,请检查配置后重试!";
+                    LogManager.Insert(this, "Tm_Tick", lb_ipc2.Text);
                     lb_ipc2.ForeColor = System.Drawing.Color.Red;
                 }
                 this.lb_ipc1.Location = new Point(this.playerA.Width / 2 - this.lb_ipc1.Width / 2, 1);

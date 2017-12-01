@@ -72,12 +72,14 @@ namespace IPCameraMonitorSettings
                     {
                         btn_scan.IsEnabled = false;
                         btn_ok.IsEnabled = false;
+                        LogManager.Insert(this, "MainWindow_Loaded", "网络连接异常,请重新连接!");
                         MsgBox.ShowV2("网络连接异常,请重新连接!", MsgBoxType.Error, this);
                     }
                 }
             }
             catch (Exception ex)
             {
+                LogManager.Insert(this, "MainWindow_Loaded", ex.Message);
                 MsgBox.ShowV2(ex.Message,MsgBoxType.Error,this);
             }
         }
@@ -134,7 +136,10 @@ namespace IPCameraMonitorSettings
             if (ss.IPCS.Count > 0)
             {
                 if (SystemSettings.Write(ss))
+                {
+                    LogManager.Insert(this, "WriteConfig", "配置成功!");
                     MsgBox.ShowV2("配置成功", MsgBoxType.Info, this);
+                }
             }
         }
 
@@ -175,6 +180,7 @@ namespace IPCameraMonitorSettings
                 }
                 else//连接失败
                 {
+                    LogManager.Insert(this, "ConnectAP_Completed", res[1].ToString());
                     MsgBox.ShowV2(res[1].ToString(), MsgBoxType.Error, this);
                     btn_scan.IsEnabled = false;
                     btn_ok.IsEnabled = false;
@@ -188,6 +194,7 @@ namespace IPCameraMonitorSettings
                     errMsg = ex.Message + "(" + ex.InnerException.Message + ")";
                 else
                     errMsg = ex.Message;
+                LogManager.Insert(this, "ConnectAP_Completed", errMsg);
                 MsgBox.ShowV2(errMsg, MsgBoxType.Error, this);
             }
             finally
@@ -266,6 +273,10 @@ namespace IPCameraMonitorSettings
                     ipcs_settings.Items.Refresh();
                     btn_ok.IsEnabled = true;
                 }
+                else
+                {
+                    LogManager.Insert(this, "ScanDev_Completed", "未扫描到任何设备!");
+                }
             }
             catch (Exception ex)
             {
@@ -274,6 +285,7 @@ namespace IPCameraMonitorSettings
                     errMsg = ex.Message + "(" + ex.InnerException.Message + ")";
                 else
                     errMsg = ex.Message;
+                LogManager.Insert(this, "ScanDev_Completed", errMsg);
                 MsgBox.ShowV2(errMsg, MsgBoxType.Error, this);
             }
             finally

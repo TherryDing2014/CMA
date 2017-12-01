@@ -1,1 +1,4 @@
-{"APUser":"ubnt","APPass":"","IPCS":[{"IsChecked":true,"IP":"192.168.0.130","Port":"80","Des":"车载摄像头","User":"","PW":""},{"IsChecked":true,"IP":"192.168.0.55","Des":"支架摄像头","User":"","Port":"80","PW":""}]}
+{
+"APUser":"aa","APPass":"bb","IPCS":[{
+"IsChecked":true,"IP":"192.168.0.55","Port":"80","Des":"aa","User":"bb","PW":"cc"},{
+"IsChecked":true,"IP":"192.168.0.130","Port":"80","Des":"aa","User":"bb","PW":"cc"}]}

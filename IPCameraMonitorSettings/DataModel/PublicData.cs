@@ -59,9 +59,9 @@ namespace IPCameraMonitorSettings
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                return ps;
             }
 
             return ps;

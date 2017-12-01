@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel_a = new System.Windows.Forms.Panel();
             this.playerA = new System.Windows.Forms.WebBrowser();
             this.panel_b = new System.Windows.Forms.Panel();
@@ -52,6 +53,7 @@
             this.playerA.Location = new System.Drawing.Point(0, 0);
             this.playerA.MinimumSize = new System.Drawing.Size(20, 20);
             this.playerA.Name = "playerA";
+            this.playerA.ScrollBarsEnabled = false;
             this.playerA.Size = new System.Drawing.Size(442, 544);
             this.playerA.TabIndex = 0;
             // 
@@ -69,6 +71,7 @@
             this.playerB.Location = new System.Drawing.Point(0, 0);
             this.playerB.MinimumSize = new System.Drawing.Size(20, 20);
             this.playerB.Name = "playerB";
+            this.playerB.ScrollBarsEnabled = false;
             this.playerB.Size = new System.Drawing.Size(473, 544);
             this.playerB.TabIndex = 0;
             // 
@@ -96,17 +99,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(936, 612);
             this.Controls.Add(this.lb_ipc2);
             this.Controls.Add(this.lb_ipc1);
             this.Controls.Add(this.panel_b);
             this.Controls.Add(this.panel_a);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "MainForm";
+            this.Text = "视频监控";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel_a.ResumeLayout(false);
             this.panel_b.ResumeLayout(false);

@@ -86,6 +86,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataModel\APManager.cs" />
+    <Compile Include="DataModel\LogManager.cs" />
     <Compile Include="DataModel\PublicData.cs" />
     <Compile Include="DataModel\ScanDevice.cs" />
     <Compile Include="DataModel\SystemSettings.cs" />
