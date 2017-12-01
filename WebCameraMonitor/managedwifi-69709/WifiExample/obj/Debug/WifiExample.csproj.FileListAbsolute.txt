@@ -1,0 +1,7 @@
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\bin\Debug\WifiExample.exe
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\bin\Debug\WifiExample.pdb
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\bin\Debug\ManagedWifi.dll
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\bin\Debug\ManagedWifi.pdb
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\obj\Debug\WifiExample.csprojResolveAssemblyReference.cache
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\obj\Debug\WifiExample.exe
+C:\Users\dingt5.SANY\Downloads\managedwifi-69709\WifiExample\obj\Debug\WifiExample.pdb

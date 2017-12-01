@@ -1,0 +1,4 @@
+{
+"APUser":"aa","APPass":"bb","IPCS":[{
+"IsChecked":true,"IP":"192.168.0.55","Port":"80","Des":"aa","User":"bb","PW":"cc"},{
+"IsChecked":true,"IP":"192.168.0.55","Port":"80","Des":"aa","User":"bb","PW":"cc"}]}
